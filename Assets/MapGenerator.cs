@@ -28,17 +28,17 @@ public class MapGenerator : MonoBehaviour
             GenerateMap();
     }
 
-    private void OnDrawGizmos() {
-        if(map != null){
-            for(int x = 0; x < _width; x++){
-                for(int y = 0; y < _height; y++){
-                    Gizmos.color = map[x,y] == 1 ? Color.black : Color.white;
-                    Vector3 pos = new Vector3(x - _width/2 + .5f, 0, y - _height/2 + .5f);
-                    Gizmos.DrawCube(pos, Vector3.one);
-                }
-            }
-        }
-    }
+    // private void OnDrawGizmos() {
+    //     if(map != null){
+    //         for(int x = 0; x < _width; x++){
+    //             for(int y = 0; y < _height; y++){
+    //                 Gizmos.color = map[x,y] == 1 ? Color.black : Color.white;
+    //                 Vector3 pos = new Vector3(x - _width/2 + .5f, 0, y - _height/2 + .5f);
+    //                 Gizmos.DrawCube(pos, Vector3.one);
+    //             }
+    //         }
+    //     }
+    // }
 
     private void GenerateMap(){
         map = new int[_width, _height];
@@ -48,6 +48,9 @@ public class MapGenerator : MonoBehaviour
         for(int i = 0; i < _smoothCount; i++){
             SmoothMap();
         }
+
+        MeshGenerator meshGenerator = GetComponent<MeshGenerator>();
+        meshGenerator.GenerateMesh(map, 1);
     }
 
     private void RandomFillMap(){
