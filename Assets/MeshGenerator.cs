@@ -118,28 +118,31 @@ public class MeshGenerator : MonoBehaviour
         triangles.Add(c.vertexIndex);
     }
 
-    struct Triangle {
-        public int vertexIndexA;
-        public int vertexIndexB;
-        public int vertexIndexC;
+    // public void OnDrawGizmos() {
+    //     if(squareGrid != null){
+    //         for(int x = 0; x < squareGrid.squares.GetLength(0); x++){
+    //             for(int y = 0; y < squareGrid.squares.GetLength(1); y++){
+    //                 Gizmos.color = (squareGrid.squares[x,y].topLeft.isActive)?Color.black:Color.white;
+    //                 Gizmos.DrawCube(squareGrid.squares[x,y].topLeft.position, Vector3.one * .4f);
 
-        int[] vertices;
+    //                 Gizmos.color = (squareGrid.squares[x,y].topRight.isActive)?Color.black:Color.white;
+    //                 Gizmos.DrawCube(squareGrid.squares[x,y].topRight.position, Vector3.one * .4f);
 
-        public Triangle(int a, int b, int c){
-            vertexIndexA = a;
-            vertexIndexB = b;
-            vertexIndexC = c;
-            vertices = new int[]{a, b, c};
-        }
+    //                 Gizmos.color = (squareGrid.squares[x,y].bottomRight.isActive)?Color.black:Color.white;
+    //                 Gizmos.DrawCube(squareGrid.squares[x,y].bottomRight.position, Vector3.one * .4f);
 
-        public bool Contains(int vertexIndex){
-            return vertexIndex == vertexIndexA || vertexIndex == vertexIndexB || vertexIndex == vertexIndexC;
-        }
+    //                 Gizmos.color = (squareGrid.squares[x,y].bottomLeft.isActive)?Color.black:Color.white;
+    //                 Gizmos.DrawCube(squareGrid.squares[x,y].bottomLeft.position, Vector3.one * .4f);
 
-        public int this[int i]{
-            get{ return vertices[i]; }
-        }
-    }
+    //                 Gizmos.color = Color.grey;
+    //                 Gizmos.DrawCube(squareGrid.squares[x,y].centerTop.position, Vector3.one * .15f);
+    //                 Gizmos.DrawCube(squareGrid.squares[x,y].centerRight.position, Vector3.one * .15f);
+    //                 Gizmos.DrawCube(squareGrid.squares[x,y].centerBottom.position, Vector3.one * .15f);
+    //                 Gizmos.DrawCube(squareGrid.squares[x,y].centerLeft.position, Vector3.one * .15f);
+    //             }
+    //         }
+    //     }
+    // }
 
     public class SquareGrid{
         public Square[,] squares;
